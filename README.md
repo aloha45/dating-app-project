@@ -23,7 +23,7 @@ I am happy to present to you: **Outward**.
 
 # Prototype
 
-[![Check out the swiping page here](https://imgur.com/gallery/craMogV)]
+![Check out the swiping page here](./images/Preview.png "Check out the swiping page here")
 
 # Technologies Used:
 
