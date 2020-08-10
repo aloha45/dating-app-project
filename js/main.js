@@ -1,6 +1,16 @@
 /*------Constants------*/
 
+const nopeArr = [];
+const yetArr = [];
 
+let fetchOption = {
+    method: 'GET',
+    mode: 'no-cors',
+    cache: 'default'
+  };
+
+const profileRequest = new Request('https://pipl.ir/v1/getPerson');
+const profilePicRequet = new Request ('http://thispersondoesnotexist.com/image');
 
 /*------Variables ------*/
 
@@ -12,7 +22,6 @@ const yepBtn = document.getElementById("yep");
 const nopeBtn = document.getElementById("nope");
 const darkModeBtn = document.getElementById("darkMode");
 
-console.log(yepBtn)
 //div id profilePic
 //div id profileInfo
 
@@ -20,13 +29,15 @@ console.log(yepBtn)
 
 yepBtn.addEventListener('click', ()=> {
     getProfile();
+    getProfilePic();
 })
 
-nopeBtn.addEventListener('click', ()=>{
+nopeBtn.addEventListener('click', ()=> {
     getProfile();
+    getProfilePic();
 })
 
-darkModeBtn.addEventListener('click', ()=>{
+darkModeBtn.addEventListener('click', ()=> {
     console.log('Dark mode engaged')
 })
 
@@ -41,8 +52,22 @@ function test() {
 }
 
 function getProfile(){
-    console.log('fetching...')
-    fetch("pipl.ir/v1/getPerson")
+    console.log('fetching profile...')
+    fetch(profileRequest, fetchOption)
+    .then((response) => {
+        return response.json()
+    })
+    .then((data) => {
+        console.log(data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+function getProfilePic (){
+    console.log('fetching profile pic...')
+    fetch(profilePicRequet, fetchOption)
     .then((response) => {
         return response.json()
     })
