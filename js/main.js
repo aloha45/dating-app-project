@@ -3,14 +3,17 @@
 const nopeArr = [];
 const yetArr = [];
 
-let fetchOption = {
-    method: 'GET',
-    mode: 'no-cors',
-    cache: 'default'
-  };
+// let fetchOption = {
+//     method: 'GET',
+//     mode: 'no-cors',
+//     cache: 'default'
+//     headers: {
+//         'Content-Type': 'application/json',
+//       },
+//   };
 
-const profileRequest = new Request('https://pipl.ir/v1/getPerson');
-const profilePicRequet = new Request ('http://thispersondoesnotexist.com/image');
+const profileRequest = new Request('https://randomuser.me/api/');
+const profilePicRequest = new Request ('http://cors-anywhere.herokuapp.com/thispersondoesnotexist.com/image');
 
 /*------Variables ------*/
 
@@ -52,13 +55,13 @@ function test() {
 }
 
 function getProfile(){
-    console.log('fetching profile...')
-    fetch(profileRequest, fetchOption)
+    fetch("https://randomuser.me/api/")
     .then((response) => {
+        console.log(response)
         return response.json()
     })
     .then((data) => {
-        console.log(data)
+        console.log(data.results[0])
     })
     .catch((err) => {
         console.log(err)
@@ -66,8 +69,7 @@ function getProfile(){
 }
 
 function getProfilePic (){
-    console.log('fetching profile pic...')
-    fetch(profilePicRequet, fetchOption)
+    fetch("http://thispersondoesnotexist.com")
     .then((response) => {
         return response.json()
     })
