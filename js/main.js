@@ -19,12 +19,10 @@ console.log(yepBtn)
 /*------Event Listeners------*/
 
 yepBtn.addEventListener('click', ()=> {
-    console.log('yep');
     getProfile();
 })
 
 nopeBtn.addEventListener('click', ()=>{
-    console.log('nope')
     getProfile();
 })
 
@@ -44,7 +42,7 @@ function test() {
 
 function getProfile(){
     console.log('fetching...')
-    fetch("https:pipl.ir/v1/getPerson")
+    fetch("pipl.ir/v1/getPerson")
     .then((response) => {
         return response.json()
     })
