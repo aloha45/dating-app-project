@@ -1,7 +1,7 @@
 /*------Constants------*/
 
 const nopeArr = [];
-const yetArr = [];
+const yepArr = [];
 
 // let fetchOption = {
 //     method: 'GET',
@@ -28,18 +28,20 @@ const profilePicture = document.getElementById("profilePic");
 const profileInfo = document.getElementById("profileInfo");
 const container = document.getElementById("containerDiv");
 
+const profileName = document.querySelector("h5")
+
 /*------Event Listeners------*/
 
 yepBtn.addEventListener('click', ()=> {
     getProfile();
     // getProfilePic();
-    // appendDiv()
+    appendDiv()
 })
 
 nopeBtn.addEventListener('click', ()=> {
     getProfile();
     // getProfilePic();
-    // appendDiv();
+    appendDiv();
 })
 
 darkModeBtn.addEventListener('click', ()=> {
@@ -62,13 +64,13 @@ function getProfile(){
         return response.json()
     })
     .then((data) => {
-        let newProfile = {}
-        newProfile["name"] = data.results[0].name.first
-        newProfile["city"] = data.results[0].location.city
-        newProfile["age"] = data.results[0].dob.age
-        console.log(newProfile)
+        let newProfile = {};
+        newProfile["name"] = data.results[0].name.first;
+        newProfile["city"] = data.results[0].location.city;
+        newProfile["age"] = data.results[0].dob.age;
+        profiles.push(newProfile);
+        render();
     })
-    // render()
     .catch((err) => {
         console.log(err)
     })
@@ -90,6 +92,7 @@ function getProfilePic (){
 }
 
 // function render() {
+    
 //     container.innerHTML = ""
 //     // Add the magical idx counter to the forEach method:
 //     quotes.forEach((quote, idx) => {
@@ -98,25 +101,30 @@ function getProfilePic (){
 //     })
 // }
 
-function appendDiv(name, age) {
+function appendDiv(name, age, idx) {
         let newDiv = document.createElement("div")
         newDiv.innerHTML = `<div class="card mb-3" style="max-width: 540px;">
-                                <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        <img src="..." class="card-img" alt="...">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <img src="https://www.thispersondoesnotexists.com/image" class="card-img" alt="...">
+                                        </div>
+                                    <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title"></h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                     </div>
-                                <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            `
+                                `
         container.appendChild(newDiv)
     }
+
+function deleteDiv(idx) {
+    quotes.splice(idx, 1)
+    render()
+  }
 //write a function that initializes the application: brings up a new profile that can be clicked on
 
 //write a function that will return 'it's a match' occasionally when pressing the yep button, that asks if you want to send a message introducing yourself
