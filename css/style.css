@@ -2,3 +2,9 @@ body {
     text-align: center;
     background-color: seashell;
 }
+
+.card {
+    text-align: left;
+    background-color: lavender;
+    margin-left: 33%;
+}
