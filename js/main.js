@@ -66,7 +66,7 @@ function getProfile(){
         newProfile["name"] = data.results[0].name.first
         newProfile["city"] = data.results[0].location.city
         newProfile["age"] = data.results[0].dob.age
- 
+        console.log(newProfile)
     })
     // render()
     .catch((err) => {
