@@ -3,6 +3,8 @@
 const nopeArr = [];
 const yepArr = [];
 
+const minutes = Math.floor(Math.random() * Math.floor(60))
+
 // let fetchOption = {
 //     method: 'GET',
 //     mode: 'no-cors',
@@ -17,8 +19,7 @@ const profilePicRequest = new Request ('http://cors-anywhere.herokuapp.com/thisp
 
 /*------Variables ------*/
 
-let quotes;
-
+profiles = [];
 /*------Cached Element References------*/
 
 const yepBtn = document.getElementById("yep");
@@ -39,9 +40,9 @@ yepBtn.addEventListener('click', ()=> {
 })
 
 nopeBtn.addEventListener('click', ()=> {
-    getProfile();
-    // getProfilePic();
-    appendDiv();
+    // getProfile();
+    getProfilePic();
+    // appendDiv();
 })
 
 darkModeBtn.addEventListener('click', ()=> {
@@ -59,6 +60,7 @@ function test() {
 }
 
 function getProfile(){
+    deleteDiv()
     fetch("https://randomuser.me/api/")
     .then((response) => {
         return response.json()
@@ -66,9 +68,10 @@ function getProfile(){
     .then((data) => {
         let newProfile = {};
         newProfile["name"] = data.results[0].name.first;
-        newProfile["city"] = data.results[0].location.city;
+        // newProfile["city"] = data.results[0].location.city;
         newProfile["age"] = data.results[0].dob.age;
         profiles.push(newProfile);
+        console.log(profiles)
         render();
     })
     .catch((err) => {
@@ -78,7 +81,7 @@ function getProfile(){
 
 
 function getProfilePic (){
-    fetch("http://thispersondoesnotexist.com")
+    fetch("https://100k-faces.glitch.me/random-image")
     .then((response) => {
         return response.json()
     })
@@ -91,15 +94,12 @@ function getProfilePic (){
     })
 }
 
-// function render() {
-    
-//     container.innerHTML = ""
-//     // Add the magical idx counter to the forEach method:
-//     quotes.forEach((quote, idx) => {
-//       // And let's pass it in to appendDiv
-//       appendDiv(quote["quote"], quote["artist"], idx)
-//     })
-// }
+function render() {
+    containerDiv.innerHTML = ""
+    profiles.forEach((newProfile, idx) => {
+      appendDiv(newProfile["name"], newProfile["age"], idx)
+    })
+}
 
 function appendDiv(name, age, idx) {
         let newDiv = document.createElement("div")
@@ -110,19 +110,18 @@ function appendDiv(name, age, idx) {
                                         </div>
                                     <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title"></h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <h5 class="card-title">${newProfile.name}</h5>
+                                        <p class="card-text">${newProfile.age} years old</p>
+                                        <p class="card-text"><small class="text-muted">Last updated ${minutes} mins ago</small></p>
                                     </div>
                                         </div>
                                     </div>
-                                </div>
-                                `
+                                </div>`
         container.appendChild(newDiv)
     }
 
 function deleteDiv(idx) {
-    quotes.splice(idx, 1)
+    profiles.splice(idx, 1)
     render()
   }
 //write a function that initializes the application: brings up a new profile that can be clicked on
