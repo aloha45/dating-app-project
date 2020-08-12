@@ -40,7 +40,6 @@ darkModeBtn.addEventListener('click', ()=> {
 })
 
 //listen for click on yep button that will store a profile in a "liked" folder, then reinitialize the program to send a new profile
-//listen for click on nope button, that reinitializes the program to send a new profile
 //listen for click on dark mode button that changes the color scheme
 
 /*------Functions------*/
@@ -52,8 +51,8 @@ function test() {
 }
 
 function initialize() {
-    getProfile();
     getProfilePic();
+    getProfile();
     render();
     appendDiv();
 }
@@ -65,7 +64,6 @@ function getProfile(){
         return response.json()
     })
     .then((data) => {
-        console.log(data)
         newProfile["name"] = data.results[0].name.first;
         // newProfile["city"] = data.results[0].location.city;
         newProfile["age"] = data.results[0].dob.age;
