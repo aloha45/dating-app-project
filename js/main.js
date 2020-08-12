@@ -83,9 +83,8 @@ function getProfilePic (){
         return response.json()
     })
     .then((data) => {
-        newProfile["picture"] = data[0].download_url;
+        newProfile["picture"] = data[parseInt(Math.floor(Math.random() * Math.floor(30)))].download_url;
         profiles.push(newProfile);
-        console.log(newProfile.picture)
     })
     render()
     .catch((err) => {
@@ -123,6 +122,5 @@ function deleteDiv(idx) {
     profiles.splice(idx, 1)
     render()
   }
-//write a function that initializes the application: brings up a new profile that can be clicked on
 
 //write a function that will return 'it's a match' occasionally when pressing the yep button, that asks if you want to send a message introducing yourself
