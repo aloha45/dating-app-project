@@ -1,10 +1,22 @@
 body {
     text-align: center;
-    background-color: seashell;
+    background-image: url("../images/dog-and-cat.jpg");
+    background-size: cover;
+    width: 100%;
+}
+
+.info {
+    color: seashell;
 }
 
 .card {
     text-align: left;
     background-color: lavender;
-    margin-left: 33%;
+    width: 100%;
+}
+
+footer {
+    position: fixed;
+    bottom: 5px;
+    width: 100%
 }
