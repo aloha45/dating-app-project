@@ -67,7 +67,6 @@ function initialize() {
     getProfilePic();
     render();
     appendDiv();
-
 }
 
 function getProfile(){
@@ -97,9 +96,9 @@ function getProfilePic (){
         return response.json()
     })
     .then((data) => {
-        newProfile["picture"] = data[0].url;
-        console.log(data[0].url)
+        newProfile["picture"] = data[0].download_url;
         profiles.push(newProfile);
+        console.log(newProfile.picture)
     })
     render()
     .catch((err) => {
