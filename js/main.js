@@ -124,7 +124,7 @@ function appendDiv(name, age, idx) {
                                     <div class="card-body">
                                         <h5 class="card-title">${newProfile.name}</h5>
                                         <p class="card-text">${newProfile.age} years old</p>
-                                        <p class="card-text"><small class="text-muted">Last updated ${minutes} mins ago</small></p>
+                                        <p class="card-text"><small class="text-muted">Last online ${minutes} mins ago</small></p>
                                     </div>
                                         </div>
                                     </div>
