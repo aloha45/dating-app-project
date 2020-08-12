@@ -5,22 +5,11 @@ const yepArr = [];
 
 const minutes = Math.floor(Math.random() * Math.floor(60))
 
-// let fetchOption = {
-//     method: 'GET',
-//     mode: 'no-cors',
-//     cache: 'default'
-//     headers: {
-//         'Content-Type': 'application/json',
-//       },
-//   };
-
-const profileRequest = new Request('https://randomuser.me/api/');
-const profilePicRequest = new Request ('http://cors-anywhere.herokuapp.com/thispersondoesnotexist.com/image');
-
 /*------Variables ------*/
 
 profiles = [];
 newProfile = {};
+
 /*------Cached Element References------*/
 
 const yepBtn = document.getElementById("yep");
@@ -37,7 +26,7 @@ const profileName = document.querySelector("h5")
 yepBtn.addEventListener('click', ()=> {
     getProfile();
     getProfilePic();
-    appendDiv()
+    appendDiv();
 })
 
 nopeBtn.addEventListener('click', ()=> {
