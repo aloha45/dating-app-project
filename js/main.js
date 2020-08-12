@@ -20,6 +20,7 @@ const profilePicRequest = new Request ('http://cors-anywhere.herokuapp.com/thisp
 /*------Variables ------*/
 
 profiles = [];
+newProfile = {};
 /*------Cached Element References------*/
 
 const yepBtn = document.getElementById("yep");
@@ -35,14 +36,14 @@ const profileName = document.querySelector("h5")
 
 yepBtn.addEventListener('click', ()=> {
     getProfile();
-    // getProfilePic();
+    getProfilePic();
     appendDiv()
 })
 
 nopeBtn.addEventListener('click', ()=> {
-    // getProfile();
+    getProfile();
     getProfilePic();
-    // appendDiv();
+    appendDiv();
 })
 
 darkModeBtn.addEventListener('click', ()=> {
@@ -55,8 +56,18 @@ darkModeBtn.addEventListener('click', ()=> {
 
 /*------Functions------*/
 
+initialize()
+
 function test() {
     console.log('test')
+}
+
+function initialize() {
+    getProfile();
+    getProfilePic();
+    render();
+    appendDiv();
+
 }
 
 function getProfile(){
@@ -66,12 +77,11 @@ function getProfile(){
         return response.json()
     })
     .then((data) => {
-        let newProfile = {};
+        console.log(data)
         newProfile["name"] = data.results[0].name.first;
         // newProfile["city"] = data.results[0].location.city;
         newProfile["age"] = data.results[0].dob.age;
         profiles.push(newProfile);
-        console.log(profiles)
         render();
     })
     .catch((err) => {
@@ -81,14 +91,17 @@ function getProfile(){
 
 
 function getProfilePic (){
-    fetch("https://100k-faces.glitch.me/random-image")
+    deleteDiv()
+    fetch("https://picsum.photos/v2/list")
     .then((response) => {
         return response.json()
     })
     .then((data) => {
-        console.log(data)
+        newProfile["picture"] = data[0].url;
+        console.log(data[0].url)
+        profiles.push(newProfile);
     })
-    // render()
+    render()
     .catch((err) => {
         console.log(err)
     })
@@ -106,7 +119,7 @@ function appendDiv(name, age, idx) {
         newDiv.innerHTML = `<div class="card mb-3" style="max-width: 540px;">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <img src="https://www.thispersondoesnotexists.com/image" class="card-img" alt="...">
+                                            <img src="${newProfile.picture}" class="card-img" alt="...">
                                         </div>
                                     <div class="col-md-8">
                                     <div class="card-body">
