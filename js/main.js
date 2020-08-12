@@ -51,10 +51,10 @@ function test() {
 }
 
 function initialize() {
-    getProfilePic();
     getProfile();
-    render();
+    getProfilePic();
     appendDiv();
+    render();
 }
 
 function getProfile(){
@@ -119,8 +119,9 @@ function appendDiv(name, age, idx) {
     }
 
 function deleteDiv(idx) {
-    profiles.splice(idx, 1)
+    profiles.splice(idx, 1);
     render()
   }
 
-//write a function that will return 'it's a match' occasionally when pressing the yep button, that asks if you want to send a message introducing yourself
+// function yepDiv(idx
+//     )
