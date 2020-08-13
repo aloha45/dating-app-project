@@ -6,6 +6,10 @@
         height: 100%;
     }
 
+    body.dark {
+        background-image: url("../images/mobile2-view.jpg")
+    }
+
     .card {
         text-align: left;
         background-color: lavender;
@@ -23,8 +27,9 @@
 
     footer {
         position: fixed;
-        bottom: 5px;
-        width: 100%
+        width: 100%;
+        text-align: left;
+        bottom: 0;
     }
 }
 
@@ -33,6 +38,10 @@
         text-align:center;
         background-image: url("../images/tablet-view.jpg");
         background-size: cover;
+    }
+    
+    body.dark {
+        background-image: url("../images/tablet2-view.jpg")
     }
 
     .card {
@@ -53,8 +62,9 @@
 
     footer {
         position: fixed;
-        bottom: 5px;
-        width: 100%
+        width: 100%;
+        text-align: left;
+        bottom: 0;
     }
 }
 
@@ -63,15 +73,22 @@
         background-image: url("../images/desktop-view.jpg");
         background-size: cover;
         text-align: center;
+        --header-font-color: green;
+    }
+
+    body.dark {
+        background-image: url("../images/desktop2-view.jpg");
+        --header-font-color: red;
+    }
+
+    .info {
+        color: lavender;
     }
 
     h1 {
         font-size: 72px;
         border: none;
-    }
-
-    .info {
-        color: lavender;
+        color: var(--header-font-color);
     }
 
     .card {
@@ -79,12 +96,17 @@
         background-color: lavender;
         justify-self: center;
         margin: 0 auto;
-        max-width: 800px;
+        /* height: 15rem; */
     }
+
+    /* .card-img {
+        width: 200%;
+        height: 200%;
+    } */
 
     footer {
         position: fixed;
-        bottom: 5px;
-        width: 100%
+        text-align:left;
+        bottom: 0;
     }
 }

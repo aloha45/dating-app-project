@@ -13,11 +13,20 @@ newProfile = {};
 const yepBtn = document.getElementById("yep");
 const nopeBtn = document.getElementById("nope");
 const darkModeBtn = document.getElementById("darkMode");
-// const profilePicture = document.getElementById("profilePic");
-// const profileInfo = document.getElementById("profileInfo");
 const container = document.getElementById("containerDiv");
+const profileName = document.querySelector("h5");
+const body = document.getElementById("body");
 
-const profileName = document.querySelector("h5")
+const snap = new Audio('audio/snap.wav')
+
+const colorScheme = {
+    dark: false,
+    changeColorScheme: function() {
+        colorScheme.dark ? colorScheme.dark = false : colorScheme.dark = true;
+        const color = colorScheme.dark ? "dark" : "";
+        body.setAttribute("class", color)
+    }
+}
 
 /*------Event Listeners------*/
 
@@ -26,24 +35,23 @@ yepBtn.addEventListener('click', ()=> {
     getProfile();
     getProfilePic();
     render();
-})
+    snap.play()
+});
 
 nopeBtn.addEventListener('click', ()=> {
     deleteDiv();
     getProfile();
     getProfilePic();
     render();
-})
+});
 
-darkModeBtn.addEventListener('click', ()=> {
-    console.log('Dark mode engaged')
-})
+darkModeBtn.addEventListener('click', colorScheme.changeColorScheme);
 
 //listen for click on yep button that will store a profile in a "liked" folder, then reinitialize the program to send a new profile
-//listen for click on dark mode button that changes the color scheme
 
 /*------Functions------*/
 
+checkUserColorSchemePreference()
 initialize()
 
 async function initialize() {
@@ -115,6 +123,12 @@ function appendDiv(name, age, idx) {
 function deleteDiv(idx) {
     profiles.splice(idx, 1);
     // render();
+  }
+
+function checkUserColorSchemePreference() {
+    if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
+      colorScheme.changeColorScheme()
+    }
   }
 
 // function yepDiv(idx
