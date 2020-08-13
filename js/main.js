@@ -3,8 +3,6 @@
 const nopeArr = [];
 const yepArr = [];
 
-const minutes = Math.floor(Math.random() * Math.floor(60))
-
 /*------Variables ------*/
 
 profiles = [];
@@ -15,8 +13,8 @@ newProfile = {};
 const yepBtn = document.getElementById("yep");
 const nopeBtn = document.getElementById("nope");
 const darkModeBtn = document.getElementById("darkMode");
-const profilePicture = document.getElementById("profilePic");
-const profileInfo = document.getElementById("profileInfo");
+// const profilePicture = document.getElementById("profilePic");
+// const profileInfo = document.getElementById("profileInfo");
 const container = document.getElementById("containerDiv");
 
 const profileName = document.querySelector("h5")
@@ -24,15 +22,17 @@ const profileName = document.querySelector("h5")
 /*------Event Listeners------*/
 
 yepBtn.addEventListener('click', ()=> {
+    deleteDiv();
     getProfile();
     getProfilePic();
-    appendDiv();
+    render();
 })
 
 nopeBtn.addEventListener('click', ()=> {
+    deleteDiv();
     getProfile();
     getProfilePic();
-    appendDiv();
+    render();
 })
 
 darkModeBtn.addEventListener('click', ()=> {
@@ -46,19 +46,14 @@ darkModeBtn.addEventListener('click', ()=> {
 
 initialize()
 
-function test() {
-    console.log('test')
-}
-
 function initialize() {
     getProfile();
     getProfilePic();
-    appendDiv();
     render();
 }
 
+// async 
 function getProfile(){
-    deleteDiv()
     fetch("https://randomuser.me/api/")
     .then((response) => {
         return response.json()
@@ -68,16 +63,16 @@ function getProfile(){
         // newProfile["city"] = data.results[0].location.city;
         newProfile["age"] = data.results[0].dob.age;
         profiles.push(newProfile);
-        render();
     })
     .catch((err) => {
         console.log(err)
     })
+    // return Promise.resolve()
 }
 
 
+// async 
 function getProfilePic (){
-    deleteDiv()
     fetch("https://picsum.photos/v2/list")
     .then((response) => {
         return response.json()
@@ -86,22 +81,22 @@ function getProfilePic (){
         newProfile["picture"] = data[parseInt(Math.floor(Math.random() * Math.floor(30)))].download_url;
         profiles.push(newProfile);
     })
-    render()
     .catch((err) => {
         console.log(err)
     })
+    // return Promise.resolve();
 }
 
 function render() {
     containerDiv.innerHTML = ""
     profiles.forEach((newProfile, idx) => {
-      appendDiv(newProfile["name"], newProfile["age"], idx)
+        appendDiv(newProfile["name"], newProfile["age"], idx)
     })
 }
 
 function appendDiv(name, age, idx) {
-        let newDiv = document.createElement("div")
-        newDiv.innerHTML = `<div class="card mb-3" style="max-width: 540px;">
+        // let newDiv = document.createElement("div")
+        container.innerHTML = `<div class="card mb-3" style="max-width: 540px;">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
                                             <img src="${newProfile.picture}" class="card-img" alt="...">
@@ -110,17 +105,17 @@ function appendDiv(name, age, idx) {
                                     <div class="card-body">
                                         <h5 class="card-title">${newProfile.name}</h5>
                                         <p class="card-text">${newProfile.age} years old</p>
-                                        <p class="card-text"><small class="text-muted">Last online ${minutes} mins ago</small></p>
+                                        <p class="card-text"><small class="text-muted">Last online ${Math.floor(Math.random() * Math.floor(60))} mins ago</small></p>
                                     </div>
                                         </div>
                                     </div>
                                 </div>`
-        container.appendChild(newDiv)
+        // container.appendChild(newDiv)
     }
 
 function deleteDiv(idx) {
     profiles.splice(idx, 1);
-    render()
+    // render();
   }
 
 // function yepDiv(idx
