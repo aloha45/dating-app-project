@@ -17,6 +17,7 @@ const container = document.getElementById("containerDiv");
 const profileName = document.querySelector("h5");
 const body = document.getElementById("body");
 
+const click = new Audio('audio/click.wav')
 const snap = new Audio('audio/snap.wav')
 
 const colorScheme = {
@@ -43,6 +44,7 @@ nopeBtn.addEventListener('click', ()=> {
     getProfile();
     getProfilePic();
     render();
+    click.play()
 });
 
 darkModeBtn.addEventListener('click', colorScheme.changeColorScheme);
