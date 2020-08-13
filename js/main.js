@@ -46,15 +46,14 @@ darkModeBtn.addEventListener('click', ()=> {
 
 initialize()
 
-function initialize() {
-    getProfile();
-    getProfilePic();
+async function initialize() {
+    await getProfile();
+    await getProfilePic();
     render();
 }
 
-// async 
-function getProfile(){
-    fetch("https://randomuser.me/api/")
+async function getProfile(){
+    await fetch("https://randomuser.me/api/")
     .then((response) => {
         return response.json()
     })
@@ -71,9 +70,8 @@ function getProfile(){
 }
 
 
-// async 
-function getProfilePic (){
-    fetch("https://picsum.photos/v2/list")
+async function getProfilePic (){
+    await fetch("https://picsum.photos/v2/list")
     .then((response) => {
         return response.json()
     })
@@ -91,6 +89,7 @@ function render() {
     containerDiv.innerHTML = ""
     profiles.forEach((newProfile, idx) => {
         appendDiv(newProfile["name"], newProfile["age"], idx)
+        console.log(newProfile)
     })
 }
 
