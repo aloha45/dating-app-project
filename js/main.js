@@ -14,7 +14,6 @@ const yepBtn = document.getElementById("yep");
 const nopeBtn = document.getElementById("nope");
 const darkModeBtn = document.getElementById("darkMode");
 const container = document.getElementById("containerDiv");
-const profileName = document.querySelector("h5");
 const body = document.getElementById("body");
 
 const click = new Audio('audio/click.wav')
@@ -104,8 +103,7 @@ function render() {
 }
 
 function appendDiv(name, age, idx) {
-        // let newDiv = document.createElement("div")
-        container.innerHTML = `<div class="card mb-3" style="max-width: 540px;">
+        container.innerHTML = `<div class="card mb-3" id="containerCard" style="max-width: 540px;">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
                                             <img src="${newProfile.picture}" class="card-img" alt="...">
@@ -119,19 +117,22 @@ function appendDiv(name, age, idx) {
                                         </div>
                                     </div>
                                 </div>`
-        // container.appendChild(newDiv)
     }
 
 function deleteDiv(idx) {
     profiles.splice(idx, 1);
-    // render();
   }
+
+function yepDiv(){
+    
+}
+
+function nopeDiv(){
+
+}
 
 function checkUserColorSchemePreference() {
     if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
       colorScheme.changeColorScheme()
     }
   }
-
-// function yepDiv(idx
-//     )

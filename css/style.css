@@ -31,6 +31,10 @@
         text-align: left;
         bottom: 0;
     }
+
+    .btn {
+        margin: 0px 25px 0px 25px;
+    }
 }
 
 @media only screen and (min-width: 769px){
@@ -66,6 +70,10 @@
         text-align: left;
         bottom: 0;
     }
+
+    .btn {
+        margin: 0px 25px 0px 25px;
+    }
 }
 
 @media only screen and (min-width: 1024px){
@@ -73,12 +81,10 @@
         background-image: url("../images/desktop-view.jpg");
         background-size: cover;
         text-align: center;
-        --header-font-color: green;
     }
 
     body.dark {
         background-image: url("../images/desktop2-view.jpg");
-        --header-font-color: red;
     }
 
     .info {
@@ -96,17 +102,21 @@
         background-color: lavender;
         justify-self: center;
         margin: 0 auto;
-        /* height: 15rem; */
+        height: 15rem;
     }
 
-    /* .card-img {
-        width: 200%;
-        height: 200%;
-    } */
+    .card-img {
+        height: 100%;
+        width: 100%;
+    }
 
     footer {
         position: fixed;
         text-align:left;
         bottom: 0;
+    }
+
+    .btn {
+        margin: 0px 25px 0px 25px;
     }
 }
