@@ -7,18 +7,23 @@ Dating apps are actually multiple applications running ascynchronously with each
 
 Any successful dating app has a function, niche, or theme that it really focuses on. Plus One pulls on two APIs: one for finding a picture and another for pulling randomly generated data for fake people and puts them together as a dry run at API library calls coalescing in a single card that can be liked or passed on.
 
-In 2019, 30.4 million users logged in to date online, and 25.1m of them did so from their smartphones. This project's layout has been designed with a mobile screen in mind. 
+User selects are logged in arrays so that prior "nope" and "yep" matches can be stored, reviewed, and eventually messaged.
+
+In 2019, 30.4 million users logged in to date online, and 25.1m of them did so from their smartphones. This project's layout has been designed with a mobile screen in mind and has media queries for cellphone, tablets, and desktops as well as a light/night mode that alternates the backgrounds of each screen. 
 
 # User Stories:
 
 <ul>
     <li>As a user (AAU), I expect to see a large, clearly visible photo with a few personal details when a new profile loads.</li>
     <li>AAU, I expect to be able to choose or reject a profile I see, and have the next profile load in promptly.</li>
+    <li>AAU, I expect a simple and satisfying UX. I want to be able to use buzzwords like being able to have "snapped" on a profile I liked.
 </ul>
 
 # Prototype
 
 ![Check out the swiping page here](./images/Preview.png "Check out the swiping page here")
+
+![Check out the homescreen here](.images/../images/Preview2.png "Check out the homescreen here")
 
 # Technologies Used:
 
@@ -40,5 +45,5 @@ Upon initialization, a profile will render. By pushing the "yep" or nope" button
 <ul>
     <li>Add Google Maps API functionality to display a match's distance from a user's declared location using modulus operator to round to the nearest mile. </li>
     <li>Add an undo button that brings back the prior profile and removes the yep/nope designation on the profile, so that users can change their mind on accidental swipes.</li>
-    <li>~~Add a "user last online" function that displays the last time a profile was online.~~</li>
     <li>Add a link to a messaging page to exchange messages with a profile.</li>
+    <li>~~Add a "user last online" function that displays the last time a profile was online.~~</li>

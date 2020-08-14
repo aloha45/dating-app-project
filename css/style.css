@@ -93,7 +93,7 @@
         background-image: url("../images/desktop-view.jpg");
         background-size: cover;
         text-align: center;
-        --darkMode-btn-content: "Dark Mode";
+        --darkMode-btn-content: "Night Mode";
     }
 
     body.dark {
