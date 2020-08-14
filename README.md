@@ -36,7 +36,7 @@ In 2019, 30.4 million users logged in to date online, and 25.1m of them did so f
 
 # Getting Started:
 
-// URL goes here //
+Find your plus one [here] (https://plus-one.surge.sh).
 
 Upon initialization, a profile will render. By pushing the "yep" or nope" buttons, new profiles will appear that you may match with or reject.
 
