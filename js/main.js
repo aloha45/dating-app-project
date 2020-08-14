@@ -3,6 +3,16 @@
 const nopeArr = [];
 const yepArr = [];
 
+const colorScheme = {
+    dark: false,
+    changeColorScheme: function() {
+        colorScheme.dark ? colorScheme.dark = false : colorScheme.dark = true;
+        const color = colorScheme.dark ? "dark" : "";
+        body.setAttribute("class", color)
+    }
+}
+
+
 /*------Variables ------*/
 
 profiles = [];
@@ -19,19 +29,10 @@ const body = document.getElementById("body");
 const click = new Audio('audio/click.wav')
 const snap = new Audio('audio/snap.wav')
 
-const colorScheme = {
-    dark: false,
-    changeColorScheme: function() {
-        colorScheme.dark ? colorScheme.dark = false : colorScheme.dark = true;
-        const color = colorScheme.dark ? "dark" : "";
-        body.setAttribute("class", color)
-    }
-}
-
 /*------Event Listeners------*/
 
 yepBtn.addEventListener('click', ()=> {
-    deleteDiv();
+    yepDiv();
     getProfile();
     getProfilePic();
     render();
@@ -39,7 +40,7 @@ yepBtn.addEventListener('click', ()=> {
 });
 
 nopeBtn.addEventListener('click', ()=> {
-    deleteDiv();
+    nopeDiv();
     getProfile();
     getProfilePic();
     render();
@@ -68,14 +69,13 @@ async function getProfile(){
     })
     .then((data) => {
         newProfile["name"] = data.results[0].name.first;
-        // newProfile["city"] = data.results[0].location.city;
+        newProfile["city"] = data.results[0].location.city;
         newProfile["age"] = data.results[0].dob.age;
         profiles.push(newProfile);
     })
     .catch((err) => {
         console.log(err)
     })
-    // return Promise.resolve()
 }
 
 
@@ -91,14 +91,12 @@ async function getProfilePic (){
     .catch((err) => {
         console.log(err)
     })
-    // return Promise.resolve();
 }
 
 function render() {
     containerDiv.innerHTML = ""
     profiles.forEach((newProfile, idx) => {
         appendDiv(newProfile["name"], newProfile["age"], idx)
-        console.log(newProfile)
     })
 }
 
@@ -110,29 +108,28 @@ function appendDiv(name, age, idx) {
                                         </div>
                                     <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">${newProfile.name}</h5>
+                                        <h3 class="card-title">${newProfile.name}</h3>
+                                        <h6 class="card-text">${newProfile.city}</h6>
                                         <p class="card-text">${newProfile.age} years old</p>
                                         <p class="card-text"><small class="text-muted">Last online ${Math.floor(Math.random() * Math.floor(60))} mins ago</small></p>
                                     </div>
                                         </div>
                                     </div>
                                 </div>`
-    }
-
-function deleteDiv(idx) {
-    profiles.splice(idx, 1);
-  }
-
-function yepDiv(){
-    
 }
 
-function nopeDiv(){
+function yepDiv(){
+    let yes = profiles.shift();
+    yepArr.push(yes);
+}
 
+function nopeDiv(idx){
+    let no = profiles.shift();
+    nopeArr.push(no);
 }
 
 function checkUserColorSchemePreference() {
     if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
       colorScheme.changeColorScheme()
     }
-  }
+}
