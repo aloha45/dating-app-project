@@ -4,10 +4,16 @@
         background-image: url("../images/mobile-view.jpg");
         background-size: cover;
         height: 100%;
+        --darkMode-btn-content: "Dark Mode";
     }
 
     body.dark {
-        background-image: url("../images/mobile2-view.jpg")
+        background-image: url("../images/mobile2-view.jpg");
+        --darkMode-btn-content: "Light Mode";
+    }
+
+    #darkMode::after{
+        content: var(--darkMode-btn-content);
     }
 
     .card {
@@ -42,10 +48,16 @@
         text-align:center;
         background-image: url("../images/tablet-view.jpg");
         background-size: cover;
+        --darkMode-btn-content: "Dark Mode";
     }
     
     body.dark {
-        background-image: url("../images/tablet2-view.jpg")
+        background-image: url("../images/tablet2-view.jpg");
+        --darkMode-btn-content: "Light Mode";
+    }
+
+    #darkMode::after{
+        content: var(--darkMode-btn-content);
     }
 
     .card {
@@ -81,10 +93,16 @@
         background-image: url("../images/desktop-view.jpg");
         background-size: cover;
         text-align: center;
+        --darkMode-btn-content: "Dark Mode";
     }
 
     body.dark {
         background-image: url("../images/desktop2-view.jpg");
+        --darkMode-btn-content: "Light Mode";
+    }
+
+    #darkMode::after{
+        content: var(--darkMode-btn-content);
     }
 
     .info {
@@ -102,7 +120,6 @@
         background-color: lavender;
         justify-self: center;
         margin: 0 auto;
-        height: 15rem;
     }
 
     .card-img {
